@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'primary': ['Boogaloo', 'cursive'],
+      'secondary': ['Nunito', 'sans-serif'],
+      'tertiary': ['Open Sans', 'sans-serif'],
+    }
   },
   plugins: [require("daisyui")],
 }
