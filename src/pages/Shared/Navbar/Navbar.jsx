@@ -1,13 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-// import { AuthContext } from '../../../providers/AuthProvider';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
 
-    // TODO:
-    const user = true;
-
-    // const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
 
