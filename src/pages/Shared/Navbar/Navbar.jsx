@@ -29,19 +29,16 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <Link to="/">
-                            <h2 className='font-primary text-white text-3xl md:text-4xl'>PlayNexus</h2>
+                            <h2 className='font-primary text-white text-3xl md:text-4xl'>InstruPlay</h2>
                         </Link>
                     </div>
                     <ul className='items-center hidden space-x-8 lg:flex'>
                         <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/">Home</NavLink></li>
-                        <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/all-toys">All Toys</NavLink></li>
+                        <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/all-toys">Instructors</NavLink></li>
+                        <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/all-toys">Classes</NavLink></li>
                         {
-                            user && <>
-                                <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/my-toys">My Toys</NavLink></li>
-                                <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/add-toy">Add A Toy</NavLink></li>
-                            </>
+                            user && <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/all-toys">Dashboard</NavLink></li>
                         }
-                        <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/blogs">Blogs</NavLink></li>
                     </ul>
 
                     <div className='flex items-center gap-6'>
