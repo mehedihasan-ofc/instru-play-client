@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { saveUser } from '../../../api/auth';
 
 const Register = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -40,38 +41,25 @@ const Register = () => {
 
         createUser(data.email, data.password)
             .then(result => {
-                const createUser = result.user;
-                console.log(createUser);
-
                 updateUserData(createUser, data.name, data.photoUrl)
                     .then(() => {
-                        const saveUserDB = { name: data.name, email: data.email, image: data.photoUrl }
-
-                        fetch('http://localhost:5000/users', {
-                            method: "POST",
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify(saveUserDB)
+                        // save user mongodb
+                        const saveUserInfo = { name: data.name, email: data.email, image: data.photoUrl }
+                        saveUser(saveUserInfo);
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Congrats! Signup successful',
+                            showConfirmButton: false,
+                            timer: 1500
                         })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.insertedId) {
-                                    reset()
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'Your work has been saved',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    })
-                                    navigate(from, { replace: true })
-                                }
-                            })
+                        navigate(from, { replace: true })
+                    })
+                    .catch(err => {
+                        setError(err.message);
                     })
             })
             .catch(err => {
-                console.log(err);
                 setError(err.message);
             });
     };
@@ -80,24 +68,14 @@ const Register = () => {
         setShowPassword(!showPassword);
     };
 
-    // const handleUpdateUserData = (user, name, photoUrl) => {
-    //     setError('');
-
-    //     updateUserData(user, name, photoUrl)
-    //         .then(() => {
-    //             console.log('user updated');
-    //             setReload(true);
-    //         })
-    //         .catch(err => {
-    //             setError(err.message);
-    //         });
-    // };
-
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                // save user mongodb
+                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL }
+                saveUser(saveUserInfo);
                 navigate(from, { replace: true });
             })
             .catch(err => {

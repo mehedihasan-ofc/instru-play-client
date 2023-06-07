@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { saveUser } from '../../../api/auth';
 
 const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext);
@@ -37,6 +38,9 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                // save user mongodb
+                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL }
+                saveUser(saveUserInfo);
                 navigate(from, { replace: true });
             })
             .catch(err => {
