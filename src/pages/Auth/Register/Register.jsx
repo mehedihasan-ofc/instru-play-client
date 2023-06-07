@@ -3,9 +3,10 @@ import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserData, setReload, signInWithGoogle } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -41,8 +42,33 @@ const Register = () => {
             .then(result => {
                 const createUser = result.user;
                 console.log(createUser);
-                handleUpdateUserData(createUser, data.name, data.photoUrl, data.gender, data.phoneNumber, data.address);
-                navigate(from, { replace: true })
+
+                updateUserData(createUser, data.name, data.photoUrl)
+                    .then(() => {
+                        const saveUserDB = { name: data.name, email: data.email, image: data.photoUrl }
+
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUserDB)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Your work has been saved',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    navigate(from, { replace: true })
+                                }
+                            })
+                    })
             })
             .catch(err => {
                 console.log(err);
@@ -54,18 +80,18 @@ const Register = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleUpdateUserData = (user, name, photoUrl, gender, phoneNumber, address) => {
-        setError('');
+    // const handleUpdateUserData = (user, name, photoUrl) => {
+    //     setError('');
 
-        updateUserData(user, name, photoUrl, gender, phoneNumber, address)
-            .then(() => {
-                console.log('user updated');
-                setReload(true);
-            })
-            .catch(err => {
-                setError(err.message);
-            });
-    };
+    //     updateUserData(user, name, photoUrl)
+    //         .then(() => {
+    //             console.log('user updated');
+    //             setReload(true);
+    //         })
+    //         .catch(err => {
+    //             setError(err.message);
+    //         });
+    // };
 
     const handleGoogleLogin = () => {
         signInWithGoogle()
