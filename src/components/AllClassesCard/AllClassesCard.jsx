@@ -3,58 +3,59 @@ import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useCart from '../../hooks/useCart';
 
 const AllClassesCard = ({ singleClass }) => {
 
     const { user, role } = useContext(AuthContext);
     const { image, className, instructorName, availableSeats, price } = singleClass;
-    // const [, refetch] = useCart();
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const [, refetch] = useCart();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleAddToSelect = singleClass => {
 
-        console.log(singleClass);
+        const { _id, className, image, price } = singleClass;
 
-        // if (user && user.email) {
+        if (user && user.email) {
 
-        //     const cartItem = { menuItem: _id, name, image, price, email: user.email }
+            const selectedClass = { selectItem: _id, className, image, price, email: user.email }
 
-        //     fetch('http://localhost:5000/carts', {
-        //         method: "POST",
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         body: JSON.stringify(cartItem)
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             if (data.insertedId) {
-        //                 refetch();
-        //                 Swal.fire({
-        //                     position: 'top-end',
-        //                     icon: 'success',
-        //                     title: 'Food added on the cart',
-        //                     showConfirmButton: false,
-        //                     timer: 1500
-        //                 })
-        //             }
-        //         })
-        // }
-        // else {
-        //     Swal.fire({
-        //         title: 'Please Login',
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Login Now'
-        //     }).then((result) => {
-        //         if (result.isConfirmed) {
-        //             navigate('/login', { state: { from: location } })
-        //         }
-        //     })
-        // }
+            fetch('http://localhost:5000/carts', {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(selectedClass)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        refetch();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Food added on the cart',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'Please Login',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login Now'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
     }
 
     return (

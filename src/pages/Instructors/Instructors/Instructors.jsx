@@ -1,10 +1,15 @@
 import React from 'react';
 import useInstructors from '../../../hooks/useInstructors';
 import AllInstructorCard from '../../../components/AllInstructorCard/AllInstructorCard';
+import LoaderSpinner from '../../Shared/LoaderSpinner/LoaderSpinner';
 
 const Instructors = () => {
 
-    const [instructors] = useInstructors();
+    const [instructors, loading] = useInstructors();
+
+    if(loading) {
+        return <LoaderSpinner />
+    }
 
     return (
         <div className='my-container my-20'>

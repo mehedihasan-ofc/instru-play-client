@@ -1,10 +1,15 @@
 import React from 'react';
 import useClasses from '../../hooks/useClasses';
 import AllClassesCard from '../../components/AllClassesCard/AllClassesCard';
+import LoaderSpinner from '../Shared/LoaderSpinner/LoaderSpinner';
 
 const Classes = () => {
 
-    const [classes] = useClasses();
+    const [classes, loading] = useClasses();
+
+    if(loading) {
+        return <LoaderSpinner />
+    }
 
     return (
         <div className='my-container my-20'>

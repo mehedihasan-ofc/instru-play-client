@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import useCart from '../../../hooks/useCart';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [cart] = useCart();
+    const navigate = useNavigate();
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
@@ -36,6 +38,14 @@ const Navbar = () => {
                         {
                             user && <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/all-toys">Dashboard</NavLink></li>
                         }
+                        <li>
+                            <Link>
+                                <button className="btn">
+                                    Cart
+                                    <div className="badge badge-secondary">+{cart?.length || 0}</div>
+                                </button>
+                            </Link>
+                        </li>
                     </ul>
 
                     <div className='flex items-center gap-6'>

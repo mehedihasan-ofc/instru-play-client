@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import LoaderSpinner from '../pages/Shared/LoaderSpinner/LoaderSpinner';
 
 const PrivateRoute = ({ children }) => {
 
@@ -12,7 +13,7 @@ const PrivateRoute = ({ children }) => {
     }
 
     if (loading) {
-        return <progress className="progress w-56"></progress>
+        return <LoaderSpinner />
     }
 
     return <Navigate to='/login' state={{ from: location }} replace></Navigate>
