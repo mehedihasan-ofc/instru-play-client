@@ -36,7 +36,7 @@ const Navbar = () => {
                         <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/instructors">Instructors</NavLink></li>
                         <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/classes">Classes</NavLink></li>
                         {
-                            user && <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/all-toys">Dashboard</NavLink></li>
+                            user && <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/dashboard/">Dashboard</NavLink></li>
                         }
                         <li>
                             <Link>
