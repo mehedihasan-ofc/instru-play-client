@@ -8,3 +8,12 @@
 .my-container {
     @apply max-w-7xl w-full mx-auto px-6
 }
+
+.drawer-side a {
+    background: transparent;
+}
+
+.drawer-side a.active {
+    color: #4318FF;
+    background: transparent;
+}

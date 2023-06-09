@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome } from 'react-icons/fa';
+import { FaAccusoft, FaHome, FaUsers } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import DashboardNavbar from '../components/Dashboard/DashboardNavbar/DashboardNavbar';
 import AdminMenu from '../components/Dashboard/AdminMenu/AdminMenu';
@@ -34,9 +34,9 @@ const Dashboard = () => {
                     {useAdmin ? <AdminMenu /> : useInstructor ? <InstructorMenu /> : <StudentMenu />}
 
                     <div className="divider"></div>
-                    <li><Link to='/'><FaHome /> Home</Link></li>
-                    <li><Link to='/instructors'><FaHome /> Instructors</Link></li>
-                    <li><Link to='/Classes'><FaHome /> Classes</Link></li>
+                    <li className='font-medium text-sm'><Link to='/'><FaHome /> Home</Link></li>
+                    <li className='font-medium text-sm my-2'><Link to='/instructors'><FaUsers /> Instructors</Link></li>
+                    <li className='font-medium text-sm'><Link to='/Classes'><FaAccusoft /> Classes</Link></li>
                 </ul>
 
             </div>
