@@ -11,6 +11,10 @@ import MyEnrolledClasses from "../pages/Dashboard/MyEnrolledClasses/MyEnrolledCl
 import MyPaymentHistory from "../pages/Dashboard/MyPaymentHistory/MyPaymentHistory";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
+import InstructorRoute from "./InstructorRoute";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +45,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/',
@@ -67,6 +71,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manage-users',
                 element: <ManageUsers />
+            },
+            // instructor route
+            {
+                path: '/dashboard/add-class',
+                element: <InstructorRoute><AddClass /></InstructorRoute>
             }
         ]
     }

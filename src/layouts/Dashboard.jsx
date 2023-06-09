@@ -5,12 +5,18 @@ import DashboardNavbar from '../components/Dashboard/DashboardNavbar/DashboardNa
 import AdminMenu from '../components/Dashboard/AdminMenu/AdminMenu';
 import InstructorMenu from '../components/Dashboard/InstructorMenu/InstructorMenu';
 import StudentMenu from '../components/Dashboard/StudentMenu/StudentMenu';
+import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
+import LoaderSpinner from '../pages/Shared/LoaderSpinner/LoaderSpinner';
 
 const Dashboard = () => {
 
-    const useStudent = false;
-    const useInstructor = false;
-    const useAdmin = true;
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
+
+    // if(isAdminLoading || isInstructorLoading) {
+    //     return <LoaderSpinner />
+    // }
 
     return (
         <div className="drawer lg:drawer-open">
@@ -31,7 +37,7 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-white text-base-content mt-10">
                     {/* Sidebar content here */}
 
-                    {useAdmin ? <AdminMenu /> : useInstructor ? <InstructorMenu /> : <StudentMenu />}
+                    {isAdmin ? <AdminMenu /> : isInstructor ? <InstructorMenu /> : <StudentMenu />}
 
                     <div className="divider"></div>
                     <li className='font-medium text-sm'><Link to='/'><FaHome /> Home</Link></li>

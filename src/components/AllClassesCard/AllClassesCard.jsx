@@ -4,14 +4,19 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const AllClassesCard = ({ singleClass }) => {
 
     const { user } = useContext(AuthContext);
-    const { image, className, instructorName, availableSeats, price } = singleClass;
     const [, refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
+    const { image, className, instructorName, availableSeats, price } = singleClass;
 
     const handleAddToSelect = singleClass => {
 
@@ -67,7 +72,7 @@ const AllClassesCard = ({ singleClass }) => {
                 <p>{availableSeats}</p>
                 <p>{price}</p>
                 <div onClick={() => handleAddToSelect(singleClass)} className="card-actions justify-end">
-                    <button disabled={availableSeats === 0} className="btn btn-primary">Select</button>
+                    <button disabled={availableSeats === 0 || isAdmin || isInstructor} className="btn btn-primary">Select</button>
                 </div>
             </div>
         </div>
