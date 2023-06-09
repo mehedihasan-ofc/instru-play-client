@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
 
@@ -8,12 +9,45 @@ const ManageUsers = () => {
         return res.json();
     })
 
-    const handleMakeInstructor = (id) => {
-        console.log(id);
+    const handleMakeInstructor = (user) => {
+
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
-    const handleMakeAdmin = (id) => {
-        console.log(id);
+    const handleMakeAdmin = (user) => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
     return (
@@ -56,10 +90,10 @@ const ManageUsers = () => {
                                 </td>
                                 <td><span className="badge badge-secondary badge-outline capitalize">{user.role}</span></td>
                                 <td>
-                                    <button onClick={() => handleMakeInstructor(user._id)} disabled={user.role === 'instructor'} className="btn btn-warning btn-xs">Make Instructor</button>
+                                    <button onClick={() => handleMakeInstructor(user)} disabled={user.role === 'instructor'} className="btn btn-warning btn-xs">Make Instructor</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleMakeAdmin(user._id)} disabled={user.role === 'admin'} className="btn btn-success btn-xs">Make Admin</button>
+                                    <button onClick={() => handleMakeAdmin(user)} disabled={user.role === 'admin'} className="btn btn-success btn-xs">Make Admin</button>
                                 </td>
                             </tr>)
                         }

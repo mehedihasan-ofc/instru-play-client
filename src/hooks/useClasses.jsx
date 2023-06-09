@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import LoaderSpinner from '../pages/Shared/LoaderSpinner/LoaderSpinner';
 
 const useClasses = () => {
 
