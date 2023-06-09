@@ -1,9 +1,17 @@
 import React from 'react';
-import { FaHome, FaMoneyCheckAlt, FaMouse, FaMousePointer, FaOpencart, FaShoppingCart } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import DashboardNavbar from '../components/Dashboard/DashboardNavbar/DashboardNavbar';
+import AdminMenu from '../components/Dashboard/AdminMenu/AdminMenu';
+import InstructorMenu from '../components/Dashboard/InstructorMenu/InstructorMenu';
+import StudentMenu from '../components/Dashboard/StudentMenu/StudentMenu';
 
 const Dashboard = () => {
+
+    const useStudent = false;
+    const useInstructor = false;
+    const useAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -22,10 +30,8 @@ const Dashboard = () => {
 
                 <ul className="menu p-4 w-80 h-full bg-white text-base-content mt-10">
                     {/* Sidebar content here */}
-                    {/* <li><Link to='/dashboard/student-home'><FaMousePointer /> My Selected Classes</Link></li> */}
-                    <li><Link to='/dashboard/my-selected-classes'><FaShoppingCart /> My Selected Classes</Link></li>
-                    <li className='my-2'><Link to='/dashboard/my-enrolled-classes'><FaMouse /> My Enrolled Classes</Link></li>
-                    <li><Link to='/dashboard/my-payment-history'><FaMoneyCheckAlt /> My Payment History</Link></li>
+
+                    {useAdmin ? <AdminMenu /> : useInstructor ? <InstructorMenu /> : <StudentMenu />}
 
                     <div className="divider"></div>
                     <li><Link to='/'><FaHome /> Home</Link></li>

@@ -9,6 +9,8 @@ import Dashboard from "../layouts/Dashboard";
 import MySelectedClasses from "../pages/Dashboard/MySelectedClasses/MySelectedClasses";
 import MyEnrolledClasses from "../pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses";
 import MyPaymentHistory from "../pages/Dashboard/MyPaymentHistory/MyPaymentHistory";
+import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +58,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/my-payment-history',
                 element: <MyPaymentHistory />
+            },
+            // admin route
+            {
+                path: '/dashboard/manage-classes',
+                element: <ManageClasses />
+            },
+            {
+                path: '/dashboard/manage-users',
+                element: <ManageUsers />
             }
         ]
     }
