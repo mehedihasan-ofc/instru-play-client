@@ -1,21 +1,52 @@
 import React from 'react';
 import useCart from '../../../hooks/useCart';
 import { FaTrash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const MySelectedClasses = () => {
 
-    const [cart] = useCart();
+    const [cart, refetch] = useCart();
     const totalPrice = cart.reduce((sum, singleClass) => singleClass.price + sum, 0);
 
+    const handleDelete = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/carts/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        refetch();
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+
     return (
-        <div>
-            <div className='uppercase flex justify-between items-center'>
+        <div className='my-container my-5'>
+            <div className='uppercase flex justify-between items-center bg-white p-3 rounded-md shadow-sm'>
                 <h3>Total Items: {cart.length}</h3>
                 <h3>Total Price: {totalPrice}</h3>
                 <button className='btn btn-sm btn-primary'>PAY</button>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto bg-white my-2 shadow-sm">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -40,9 +71,9 @@ const MySelectedClasses = () => {
                             <td>
                                 {item.className}
                             </td>
-                            <td className='text-end'>${item.price}</td>
+                            <td>${item.price}</td>
                             <td>
-                                <button className="btn btn-outline btn-circle btn-secondary btn-xs"><FaTrash /> </button>
+                                <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-circle btn-secondary btn-md text-xl"><FaTrash /> </button>
                             </td>
                         </tr>)}
 

@@ -41,10 +41,11 @@ const Register = () => {
 
         createUser(data.email, data.password)
             .then(result => {
-                updateUserData(createUser, data.name, data.photoUrl)
+                updateUserData(result.user, data.name, data.photoUrl)
                     .then(() => {
+                        setReload(true);
                         // save user mongodb
-                        const saveUserInfo = { name: data.name, email: data.email, image: data.photoUrl }
+                        const saveUserInfo = { name: data.name, email: data.email, image: data.photoUrl, role: 'student' }
                         saveUser(saveUserInfo);
                         Swal.fire({
                             position: 'top-center',
@@ -56,10 +57,12 @@ const Register = () => {
                         navigate(from, { replace: true })
                     })
                     .catch(err => {
+                        console.log(err);
                         setError(err.message);
                     })
             })
             .catch(err => {
+                console.log(err);
                 setError(err.message);
             });
     };
@@ -74,7 +77,7 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 // save user mongodb
-                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL }
+                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL, role: 'student' }
                 saveUser(saveUserInfo);
                 navigate(from, { replace: true });
             })

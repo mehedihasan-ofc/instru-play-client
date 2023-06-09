@@ -39,7 +39,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 // save user mongodb
-                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL }
+                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL, role: 'student' }
                 saveUser(saveUserInfo);
                 navigate(from, { replace: true });
             })

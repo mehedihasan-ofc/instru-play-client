@@ -7,7 +7,7 @@ import useCart from '../../hooks/useCart';
 
 const AllClassesCard = ({ singleClass }) => {
 
-    const { user, role } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const { image, className, instructorName, availableSeats, price } = singleClass;
     const [, refetch] = useCart();
     const navigate = useNavigate();
@@ -67,7 +67,7 @@ const AllClassesCard = ({ singleClass }) => {
                 <p>{availableSeats}</p>
                 <p>{price}</p>
                 <div onClick={() => handleAddToSelect(singleClass)} className="card-actions justify-end">
-                    <button disabled={availableSeats === 0 || role === "instructor" || role === "admin"} className="btn btn-primary">Select</button>
+                    <button disabled={availableSeats === 0} className="btn btn-primary">Select</button>
                 </div>
             </div>
         </div>
