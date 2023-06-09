@@ -46,7 +46,7 @@ const MySelectedClasses = () => {
                 <button className='btn btn-sm btn-primary'>PAY</button>
             </div>
 
-            <div className="overflow-x-auto bg-white my-2 shadow-sm">
+            <div className="overflow-x-auto bg-white my-2 shadow-md">
                 <table className="table">
                     {/* head */}
                     <thead>
