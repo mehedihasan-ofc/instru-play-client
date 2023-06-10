@@ -13,6 +13,18 @@ const ManageUsers = () => {
         return res.data;
     })
 
+    // // const { user } = useContext(AuthContext);
+    // const [axiosSecure] = useAxiosSecure();
+
+    // const { data: users = [], refetch } = useQuery({
+    //     queryKey: ['users'],
+    //     enabled: !!localStorage.getItem('access-token'),
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get(`/users`)
+    //         return res.data;
+    //     }
+    // })
+
     const handleMakeInstructor = (user) => {
 
         fetch(`http://localhost:5000/users/instructor/${user._id}`, {
