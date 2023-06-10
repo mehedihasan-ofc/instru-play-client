@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaSpinner } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ paymentClass, price }) => {
 
@@ -15,6 +16,7 @@ const CheckoutForm = ({ paymentClass, price }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (price > 0) {
@@ -94,12 +96,13 @@ const CheckoutForm = ({ paymentClass, price }) => {
             const payment = {
                 cartId: paymentClass._id,
                 classId: paymentClass.selectItem,
-                image: paymentClass.iamge,
+                image: paymentClass.image,
                 className: paymentClass.className,
                 email: user?.email,
                 price,
                 transactionId: paymentIntent.id,
                 date: new Date(),
+                status: 'enrolled'
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
@@ -107,6 +110,7 @@ const CheckoutForm = ({ paymentClass, price }) => {
                     if (res.data.insertResult.insertedId) {
                         toast.success(`${paymentClass.className} enrollment is successful.`)
                     }
+                    navigate('/dashboard/my-enrolled-classes')
                 })
         }
     }
