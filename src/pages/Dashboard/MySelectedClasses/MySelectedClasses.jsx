@@ -41,44 +41,54 @@ const MySelectedClasses = () => {
     return (
         <div className='my-container my-5'>
 
-            <div className="overflow-x-auto bg-white my-2 shadow-md">
+            <div className="overflow-x-auto bg-white shadow-md">
                 <table className="table">
                     {/* head */}
                     <thead>
                         <tr className='uppercase'>
                             <th>#</th>
                             <th>Class</th>
-                            <th>Name</th>
+                            <th>Instructor Name</th>
                             <th>Price</th>
                             <th>Pay</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {cart.map((item, idx) => <tr key={item._id}>
-                            <td>{idx + 1}</td>
-                            <td>
-                                <div className="avatar">
-                                    <div className="w-12 rounded-xl">
-                                        <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                        {
+                            cart.map((item, idx) => <tr key={item._id}>
+                                <td>
+                                    {idx + 1}
+                                </td>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{item.className}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                {item.className}
-                            </td>
-                            <td>${item.price}</td>
-                            <td>
-                                <Link to={`/dashboard/payment/${item._id}`}>
-                                    <button className="btn btn-outline btn-circle btn-secondary btn-md text-xl"><FaMoneyBillAlt /> </button>
-                                </Link>
-                            </td>
-                            <td>
-                                <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-circle btn-warning btn-md text-xl"><FaTrash /> </button>
-                            </td>
-                        </tr>)}
+                                </td>
+                                <td>
+                                    {item.instructorName}
+                                </td>
+                                <td>${item.price}</td>
+                                <td>
+                                    <Link to={`/dashboard/payment/${item._id}`}>
+                                        <button className="btn btn-outline btn-circle btn-secondary btn-md text-xl"><FaMoneyBillAlt /> </button>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-circle btn-warning btn-md text-xl"><FaTrash /> </button>
+                                </td>
+                            </tr>)
+                        }
 
                     </tbody>
+
                 </table>
             </div>
         </div>

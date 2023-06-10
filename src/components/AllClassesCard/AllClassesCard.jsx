@@ -20,11 +20,11 @@ const AllClassesCard = ({ singleClass }) => {
 
     const handleAddToSelect = singleClass => {
 
-        const { _id, className, image, price } = singleClass;
+        const { _id, className, image, price, instructorName } = singleClass;
 
         if (user && user.email) {
 
-            const selectedClass = { selectItem: _id, className, image, price, email: user.email }
+            const selectedClass = { selectItem: _id, className, image, price, email: user.email, instructorName }
 
             fetch('http://localhost:5000/carts', {
                 method: "POST",
