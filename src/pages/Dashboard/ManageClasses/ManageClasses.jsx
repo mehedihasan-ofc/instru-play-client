@@ -1,6 +1,7 @@
 import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 
 const ManageClasses = () => {
 
@@ -12,13 +13,33 @@ const ManageClasses = () => {
     })
 
     const handleApproveClass = singleClass => {
-        console.log('Approve');
+        fetch(`http://localhost:5000/classes/approve/${singleClass._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch();
+                    toast.success(`${singleClass.className} is Approve`)
+                }
+            })
     }
 
     const handleDenyClass = singleClass => {
-        console.log('Deny');
+        fetch(`http://localhost:5000/classes/deny/${singleClass._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch();
+                    toast.warning(`${singleClass.className} is Deny`)
+                }
+            })
     }
- 
+
     return (
         <div className='my-container my-5'>
             <div>
@@ -76,10 +97,10 @@ const ManageClasses = () => {
                                         <span className='badge badge-warning badge-outline'>{singleClass.status}</span>
                                     </td>
                                     <td>
-                                        <button onClick={() => handleApproveClass(singleClass)} className="btn btn-xs btn-success">Approve</button>
+                                        <button disabled={singleClass.status === "approved" || singleClass.status === "denied"} onClick={() => handleApproveClass(singleClass)} className="btn btn-xs btn-success">Approve</button>
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDenyClass(singleClass)} className="btn btn-xs btn-error">Deny</button>
+                                        <button disabled={singleClass.status === "approved" || singleClass.status === "denied"} onClick={() => handleDenyClass(singleClass)} className="btn btn-xs btn-error">Deny</button>
                                     </td>
                                     <td>
                                         <button className="btn btn-xs btn-outline btn-accent">feedback</button>
