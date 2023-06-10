@@ -1,12 +1,12 @@
 import React from 'react';
 import useCart from '../../../hooks/useCart';
-import { FaTrash } from 'react-icons/fa';
+import { FaMoneyBillAlt, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const MySelectedClasses = () => {
 
     const [cart, refetch] = useCart();
-    const totalPrice = cart.reduce((sum, singleClass) => singleClass.price + sum, 0);
 
     const handleDelete = id => {
         Swal.fire({
@@ -40,22 +40,18 @@ const MySelectedClasses = () => {
 
     return (
         <div className='my-container my-5'>
-            <div className='uppercase flex justify-between items-center bg-white p-3 rounded-md shadow-sm'>
-                <h3>Total Items: {cart.length}</h3>
-                <h3>Total Price: {totalPrice}</h3>
-                <button className='btn btn-sm btn-primary'>PAY</button>
-            </div>
 
             <div className="overflow-x-auto bg-white my-2 shadow-md">
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className='uppercase'>
                             <th>#</th>
                             <th>Class</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Action</th>
+                            <th>Pay</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,7 +69,12 @@ const MySelectedClasses = () => {
                             </td>
                             <td>${item.price}</td>
                             <td>
-                                <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-circle btn-secondary btn-md text-xl"><FaTrash /> </button>
+                                <Link to='/dashboard/payment'>
+                                    <button className="btn btn-outline btn-circle btn-secondary btn-md text-xl"><FaMoneyBillAlt /> </button>
+                                </Link>
+                            </td>
+                            <td>
+                                <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-circle btn-warning btn-md text-xl"><FaTrash /> </button>
                             </td>
                         </tr>)}
 
