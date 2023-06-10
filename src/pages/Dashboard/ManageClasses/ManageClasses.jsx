@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const ManageClasses = () => {
 
@@ -44,7 +45,7 @@ const ManageClasses = () => {
         <div className='my-container my-5'>
             <div>
                 <div className="overflow-x-auto bg-white shadow-md">
-                    <table className="table table-xs">
+                    <table className="table table-sm">
                         {/* head */}
                         <thead>
                             <tr className='uppercase'>
@@ -103,7 +104,9 @@ const ManageClasses = () => {
                                         <button disabled={singleClass.status === "approved" || singleClass.status === "denied"} onClick={() => handleDenyClass(singleClass)} className="btn btn-xs btn-error">Deny</button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-xs btn-outline btn-accent">feedback</button>
+                                        <Link to={`/dashboard/feedback/${singleClass._id}`}>
+                                            <button className="btn btn-xs btn-outline btn-accent">feedback</button>
+                                        </Link>
                                     </td>
                                 </tr>)
                             }

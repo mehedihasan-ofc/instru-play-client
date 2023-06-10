@@ -34,7 +34,7 @@ const Dashboard = () => {
             <div className="drawer-side shadow-sm">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-                <ul className="menu p-4 w-80 h-full bg-white text-base-content mt-10">
+                <ul className="menu p-4 w-80 h-full bg-white text-base-content">
                     {/* Sidebar content here */}
 
                     {isAdmin ? <AdminMenu /> : isInstructor ? <InstructorMenu /> : <StudentMenu />}

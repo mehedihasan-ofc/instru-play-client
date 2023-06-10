@@ -21,6 +21,7 @@ import InstructorHome from "../pages/Dashboard/InstructorHome/InstructorHome";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
+import Feedback from "../pages/Dashboard/Feedback/Feedback";
 
 const router = createBrowserRouter([
     {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manage-classes',
                 element: <AdminRoute><ManageClasses /></AdminRoute>
+            },
+            {
+                path: '/dashboard/feedback/:id',
+                element: <AdminRoute><Feedback /></AdminRoute>
             },
             {
                 path: '/dashboard/manage-users',
