@@ -69,7 +69,7 @@ const MySelectedClasses = () => {
                             </td>
                             <td>${item.price}</td>
                             <td>
-                                <Link to='/dashboard/payment'>
+                                <Link to={`/dashboard/payment/${item._id}`}>
                                     <button className="btn btn-outline btn-circle btn-secondary btn-md text-xl"><FaMoneyBillAlt /> </button>
                                 </Link>
                             </td>
