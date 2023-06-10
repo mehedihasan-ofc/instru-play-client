@@ -13,18 +13,6 @@ const ManageUsers = () => {
         return res.data;
     })
 
-    // // const { user } = useContext(AuthContext);
-    // const [axiosSecure] = useAxiosSecure();
-
-    // const { data: users = [], refetch } = useQuery({
-    //     queryKey: ['users'],
-    //     enabled: !!localStorage.getItem('access-token'),
-    //     queryFn: async () => {
-    //         const res = await axiosSecure.get(`/users`)
-    //         return res.data;
-    //     }
-    // })
-
     const handleMakeInstructor = (user) => {
 
         fetch(`http://localhost:5000/users/instructor/${user._id}`, {
@@ -72,11 +60,12 @@ const ManageUsers = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className='uppercase'>
                             <th>
                                 #
                             </th>
-                            <th>User</th>
+                            <th>Image</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th className='text-end'>Action</th>
@@ -90,16 +79,14 @@ const ManageUsers = () => {
                                     {idx + 1}
                                 </td>
                                 <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={user.image} alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="font-bold ml-5">{user.name}</div>
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-12 h-12">
+                                            <img src={user.image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
+                                </td>
+                                <td>
+                                    {user.name}
                                 </td>
                                 <td>
                                     <span className="badge badge-ghost badge-sm">{user.email}</span>
