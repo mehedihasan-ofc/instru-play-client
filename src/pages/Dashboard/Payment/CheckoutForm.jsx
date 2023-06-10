@@ -6,7 +6,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaSpinner } from 'react-icons/fa';
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ paymentClass, price }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -14,6 +14,7 @@ const CheckoutForm = ({ price }) => {
     const [axiosSecure] = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
         if (price > 0) {
@@ -86,6 +87,28 @@ const CheckoutForm = ({ price }) => {
         }
 
         setProcessing(false);
+
+        if (paymentIntent.status === "succeeded") {
+            setTransactionId(paymentIntent.id)
+            // save payment information to the server
+            const payment = {
+                cartId: paymentClass._id,
+                classId: paymentClass.selectItem,
+                image: paymentClass.iamge,
+                className: paymentClass.className,
+                email: user?.email,
+                price,
+                transactionId: paymentIntent.id,
+                date: new Date(),
+            }
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertResult.insertedId) {
+                        toast.success(`${paymentClass.className} enrollment is successful.`)
+                    }
+                })
+        }
     }
 
     return (
