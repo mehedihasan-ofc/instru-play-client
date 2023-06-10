@@ -2,12 +2,16 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const Navbar = () => {
 
+    const [cart] = useCart();
     const { user, logOut } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
-    const [cart] = useCart();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const navigate = useNavigate();
 
     const toggleNavbar = () => {
@@ -36,7 +40,7 @@ const Navbar = () => {
                         <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/instructors">Instructors</NavLink></li>
                         <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/classes">Classes</NavLink></li>
                         {
-                            user && <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/dashboard/">Dashboard</NavLink></li>
+                            user && <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to={isAdmin ? '/dashboard/admin-home' : isInstructor ? '/dashboard/instructor-home' : '/dashboard/student-home'}>Dashboard</NavLink></li>
                         }
                         <li>
                             <Link>
