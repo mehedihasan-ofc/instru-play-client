@@ -71,8 +71,8 @@ const AllClassesCard = ({ singleClass }) => {
                 <p>{instructorName}</p>
                 <p>{availableSeats}</p>
                 <p>{price}</p>
-                <div onClick={() => handleAddToSelect(singleClass)} className="card-actions justify-end">
-                    <button disabled={availableSeats === 0 || isAdmin || isInstructor} className="btn btn-primary">Select</button>
+                <div className="card-actions justify-end">
+                    <button onClick={() => handleAddToSelect(singleClass)} disabled={availableSeats === 0 || isAdmin || isInstructor} className="btn btn-primary">Select</button>
                 </div>
             </div>
         </div>

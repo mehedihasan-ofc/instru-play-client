@@ -7,7 +7,7 @@ const Instructors = () => {
 
     const [instructors, loading] = useInstructors();
 
-    if(loading) {
+    if (loading) {
         return <LoaderSpinner />
     }
 

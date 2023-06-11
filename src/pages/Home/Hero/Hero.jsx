@@ -23,7 +23,7 @@ const Hero = () => {
     });
 
     return (
-        <div className='relative'>
+        <div>
             <>
                 <Swiper
                     autoplay={{
@@ -42,7 +42,7 @@ const Hero = () => {
                         sliders.map((item, id) => <SwiperSlide
                             style={
                                 {
-                                    height: "100vh",
+                                    height: "90vh",
                                     borderRadius: "0",
                                     background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${item.image}) no-repeat center / cover`
                                 }
@@ -53,7 +53,7 @@ const Hero = () => {
                             <div>
                                 <h1 className="text-white uppercase text-3xl md:text-4xl">{item.title}</h1>
                                 <p className="w-full font-secondary text-xs md:text-base text-white py-3 md:py-4">{item.description}</p>
-                                <button className="border border-gray-100 text-white px-4 py-2 text-sm hover:border-cyan-500 hover:text-cyan-500 transition duration-200">Explore Now</button>
+                                <button className="border border-gray-100 text-white px-4 py-2 text-sm hover:border-cyan-500 hover:text-cyan-500 transition duration-200">{item.button}</button>
                             </div>
                         </SwiperSlide>)
                     }

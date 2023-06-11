@@ -7,7 +7,7 @@ const Classes = () => {
 
     const [classes, loading] = useClasses();
 
-    if(loading) {
+    if (loading) {
         return <LoaderSpinner />
     }
 
