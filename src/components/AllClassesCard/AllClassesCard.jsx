@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useAdmin from '../../hooks/useAdmin';
 import useInstructor from '../../hooks/useInstructor';
+import { FaArrowRight, FaChair, FaMoneyCheckAlt } from 'react-icons/fa';
 
 const AllClassesCard = ({ singleClass }) => {
 
@@ -68,11 +69,22 @@ const AllClassesCard = ({ singleClass }) => {
             <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{className}</h2>
-                <p>{instructorName}</p>
-                <p>{availableSeats}</p>
-                <p>{price}</p>
-                <div className="card-actions justify-end">
-                    <button onClick={() => handleAddToSelect(singleClass)} disabled={availableSeats === 0 || isAdmin || isInstructor} className="btn btn-primary">Select</button>
+                <p>Instructor Name: {instructorName}</p>
+
+                <div className='flex justify-between items-center'>
+                    <div className='flex items-center gap-2'>
+                        <FaChair className='text-[#F24080]' />
+                        <p>{availableSeats}</p>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <FaMoneyCheckAlt className='text-[#F24080]' />
+                        <p>${price}</p>
+                    </div>
+                </div>
+
+                <div className='divider my-0'></div>
+                <div className="card-actions justify-center">
+                    <button onClick={() => handleAddToSelect(singleClass)} disabled={availableSeats === 0 || isAdmin || isInstructor} className="btn btn-secondary btn-outline btn-sm"><FaArrowRight /> Select</button>
                 </div>
             </div>
         </div>
