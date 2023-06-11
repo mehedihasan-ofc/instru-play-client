@@ -207,7 +207,7 @@ const Register = () => {
                     <div className='text-center mt-4'>
                         <button
                             type="submit"
-                            className="bg-rose-500 w-full rounded-md py-3 text-white"
+                            className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out"
                         >
                             Sign up
                         </button>

@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      'primary': ['Boogaloo', 'cursive'],
-      'secondary': ['Nunito', 'sans-serif'],
-      'tertiary': ['Open Sans', 'sans-serif'],
+      'primary': ['Spicy Rice', 'cursive'],
+      'secondary': ['Mulish', 'sans-serif'],
+      'tertiary': ['Poppins', 'sans-serif'],
     }
   },
   plugins: [require("daisyui")],

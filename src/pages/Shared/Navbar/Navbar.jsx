@@ -27,7 +27,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-gradient-to-r from-purple-500 to-indigo-500">
+    <nav className="bg-gradient-to-r from-purple-500 font-secondary to-indigo-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16">
 
@@ -37,12 +37,12 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <ul className='items-center hidden space-x-8 lg:flex'>
-            <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/">Home</NavLink></li>
-            <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/instructors">Instructors</NavLink></li>
-            <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to="/classes">Classes</NavLink></li>
+          <ul className='items-center hidden uppercase space-x-8 lg:flex'>
+            <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-[#F24080]" : "text-white"} to="/">Home</NavLink></li>
+            <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-[#F24080]" : "text-white"} to="/instructors">Instructors</NavLink></li>
+            <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-[#F24080]" : "text-white"} to="/classes">Classes</NavLink></li>
             {
-              user && <li className='text-white text-base font-semibold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to={isAdmin ? '/dashboard/admin-home' : isInstructor ? '/dashboard/instructor-home' : '/dashboard/student-home'}>Dashboard</NavLink></li>
+              user && <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to={isAdmin ? '/dashboard/admin-home' : isInstructor ? '/dashboard/instructor-home' : '/dashboard/student-home'}>Dashboard</NavLink></li>
             }
             {!isAdmin && !isInstructor && <li>
               <Link to='/dashboard/my-selected-classes'>
