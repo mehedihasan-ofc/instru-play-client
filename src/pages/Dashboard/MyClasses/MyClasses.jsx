@@ -66,7 +66,7 @@ const MyClasses = () => {
                                     <span className='badge badge-secondary badge-outline'>{myClass.status}</span>
                                 </td>
                                 {myClass.feedback && <td>
-                                    <button className="btn btn-ghost btn-xs">details</button>
+                                    <button className="btn btn-ghost btn-xs">{myClass.feedback}</button>
                                 </td>}
                             </tr>)
                         }
