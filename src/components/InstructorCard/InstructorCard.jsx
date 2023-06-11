@@ -13,10 +13,10 @@ const InstructorCard = ({ singleInstructor }) => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title font-secondary font-extrabold">{name}</h2>
-                <p className='flex items-center gap-2'>
+                <div className='flex items-center gap-2'>
                     <FaUserCheck className='text-[#F24080]' />
                     <p><span className='font-medium'>{students}+</span> satisfied students</p>
-                </p>
+                </div>
                 <div className='divider my-0'></div>
                 <div className="card-actions">
                     <span className='bg-[#F24080] p-2 text-white rounded-full cursor-pointer'><FaFacebookF /></span>

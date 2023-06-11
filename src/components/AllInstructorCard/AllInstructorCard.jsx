@@ -20,7 +20,7 @@ const AllInstructorCard = ({ singleInstructor }) => {
             </figure>
             <div className="card-body items-center text-center py-4 px-5">
                 <h2 className="card-title">{name}</h2>
-                <p className='flex items-center gap-2'><FaRegEnvelope className='text-red-500' /> {email}</p>
+                <div className='flex items-center gap-2'><FaRegEnvelope className='text-red-500' /> {email}</div>
                 <div className='divider my-0'></div>
                 <div className="card-actions">
                     <button className="btn btn-circle btn-error btn-outline">

@@ -51,7 +51,7 @@ const Hero = () => {
 
                         >
                             <div>
-                                <h1 className="text-white font-secondary font-extrabold uppercase text-3xl md:text-4xl">{item.title}</h1>
+                                <h1 className="text-white font-secondary font-extrabold uppercase text-xl md:text-4xl">{item.title}</h1>
                                 <p className="w-full font-secondary text-xs md:text-base text-white py-3 md:py-4">{item.description}</p>
                                 <button className="border border-gray-100 text-white px-4 py-2 text-sm hover:border-cyan-500 hover:text-cyan-500 transition duration-200">{item.button}</button>
                             </div>
