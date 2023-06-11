@@ -5,8 +5,6 @@ const ClassCard = ({ singleClass }) => {
 
     const { image, className, instructorName, price, students } = singleClass;
 
-    console.log(singleClass);
-
     return (
 
         <div className="card w-full mb-5 md:mb-0 md:w-96 bg-base-100 shadow-md">
