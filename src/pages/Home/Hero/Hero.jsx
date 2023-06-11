@@ -1,34 +1,75 @@
 import React from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import { useQuery } from '@tanstack/react-query';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-// import carousel image
-import slide1 from '../../../assets/slider/slide1.jpg';
-import slide2 from '../../../assets/slider/slide2.jpg';
-import slide3 from '../../../assets/slider/slide3.jpg';
-import slide4 from '../../../assets/slider/slide4.jpg';
-import slide5 from '../../../assets/slider/slide5.jpg';
+import './sliders.css';
+
+// import required modules
+import { Pagination, Navigation, Autoplay } from "swiper";
 
 const Hero = () => {
+
+    const { data: sliders = [] } = useQuery({
+        queryKey: ['sliders'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/sliders');
+            return res.json();
+        }
+    });
+
     return (
-        <Carousel>
-            <div>
-                <img src={slide1} />
-            </div>
-            <div>
-                <img src={slide2} />
-            </div>
-            <div>
-                <img src={slide3} />
-            </div>
-            <div>
-                <img src={slide4} />
-            </div>
-            <div>
-                <img src={slide5} />
-            </div>
-        </Carousel>
+        <div className='relative'>
+            <>
+                <Swiper
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        dynamicBullets: true,
+                    }}
+                    slidesPerView={1}
+                    loop={true}
+                    modules={[Autoplay, Pagination, Navigation]}
+                    className="mySwiper"
+                >
+                    {
+                        sliders.map((item, id) => <SwiperSlide
+                            style={
+                                {
+                                    height: "100vh",
+                                    borderRadius: "0",
+                                    background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${item.image}) no-repeat center / cover`
+                                }
+                            }
+                            key={id}
+
+                        >
+                            <div>
+                                <h1 className="text-white uppercase text-3xl md:text-4xl">{item.title}</h1>
+                                <p className="w-full font-secondary text-xs md:text-base text-white py-3 md:py-4">{item.description}</p>
+                                <button className="border border-gray-100 text-white px-4 py-2 text-sm hover:border-cyan-500 hover:text-cyan-500 transition duration-200">Explore Now</button>
+                            </div>
+                        </SwiperSlide>)
+                    }
+                </Swiper>
+            </>
+        </div>
     );
 };
 
 export default Hero;
+
+/* 
+<div>
+                                <h1 className="text-white font-primary uppercase text-3xl md:text-5xl">{singleSlider.title}</h1>
+                                <p className="w-full font-secondary text-xs md:text-base text-white py-3 md:py-4">{singleSlider.description}</p>
+
+                                <button className="border border-gray-100 text-white px-4 py-2 text-sm hover:border-cyan-500 hover:text-cyan-500 transition duration-200">Explore Now</button>
+                            </div>
+*/
