@@ -101,19 +101,19 @@ const Login = () => {
                         <div className='text-center mt-4'>
                             <button
                                 type="submit"
-                                className="bg-rose-500 w-full rounded-md py-3 text-white"
+                                className="btn btn-secondary bg-pink-500 text-white hover:bg-pink-600 font-bold py-2 px-7 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 w-full"
                             >
                                 Login
                             </button>
                         </div>
                     </form>
 
-                    <p className='text-center mt-3 font-semibold'>New to InstruPlay? <Link to='/register' className='text-primary'>Sign Up</Link></p>
+                    <p className='text-center mt-3 font-semibold'>New to InstruPlay? <Link to='/register' className='text-pink-600'>Sign Up</Link></p>
 
                     <div className='mt-2'>
                         <div className="divider">OR</div>
-                        <div className='border p-2 rounded-full mb-2'>
-                            <button onClick={handleGoogleLogin} className='flex text-blue-500 items-center justify-center w-full'>
+                        <div className='p-2 mb-2'>
+                            <button onClick={handleGoogleLogin} className='btn btn-outline btn-primary flex text-blue-500 items-center rounded-full justify-center w-full'>
                                 <FaGoogle className='text-xl mr-3' />
                                 <span className='font-semibold'>Continue with Google</span>
                             </button>

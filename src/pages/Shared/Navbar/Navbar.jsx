@@ -36,9 +36,10 @@ const Navbar = () => {
 
 
   const handleToggle = () => {
+    console.log('a');
     const bodyElement = document.getElementsByTagName('body')[0];
     const currentTheme = bodyElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     bodyElement.setAttribute('data-theme', newTheme);
   }
 
