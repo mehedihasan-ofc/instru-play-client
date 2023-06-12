@@ -11,12 +11,8 @@ import LoaderSpinner from '../pages/Shared/LoaderSpinner/LoaderSpinner';
 
 const Dashboard = () => {
 
-    const [isAdmin, isAdminLoading] = useAdmin();
-    const [isInstructor, isInstructorLoading] = useInstructor();
-
-    // if(isAdminLoading || isInstructorLoading) {
-    //     return <LoaderSpinner />
-    // }
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     return (
         <div className="drawer lg:drawer-open">
@@ -28,7 +24,7 @@ const Dashboard = () => {
 
                 <Outlet />
 
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn btn-secondary my-4 drawer-button lg:hidden">Open drawer</label>
 
             </div>
             <div className="drawer-side shadow-sm">
