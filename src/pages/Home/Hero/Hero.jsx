@@ -42,7 +42,7 @@ const Hero = () => {
                         sliders.map((item, id) => <SwiperSlide
                             style={
                                 {
-                                    height: "90vh",
+                                    height: "100vh",
                                     borderRadius: "0",
                                     background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${item.image}) no-repeat center / cover`
                                 }
