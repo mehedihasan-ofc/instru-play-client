@@ -32,7 +32,7 @@ const MyClasses = () => {
                             <th>AVAIL. Seats</th>
                             <th>Enrolled</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Feedback</th>
                         </tr>
                     </thead>
                     <tbody>

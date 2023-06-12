@@ -6,7 +6,7 @@ const Footer = () => {
             <footer className="footer p-10 md:p-20 bg-[#0C4B65] text-white">
                 <div>
                     <h2 className='font-primary text-4xl md:text-5xl'>InstruPlay</h2>
-                    <p className='mt-1'>Rev up the Fun with PlayNexus <br />- Kids' Car Adventures!</p>
+                    <p className='mt-1'>Our mission is to provide a seamless <br />- and enjoyable experience</p>
                 </div>
                 <div>
                     <span className="footer-title">Explore</span>
@@ -26,7 +26,7 @@ const Footer = () => {
                     <span className="footer-title">Address</span>
                     <a className="link link-hover">4845 Deer Ridge Drive <br />Montclair, NJ 07042</a>
                     <a className="link link-hover">Phone: 973-571-3250</a>
-                    <a className="link link-hover">Email: playnexus@gmail.com</a>
+                    <a className="link link-hover">Email: instruplay@gmail.com</a>
                 </div>
             </footer>
             <footer className="footer footer-center p-4 bg-[#0A3F55] text-white">
