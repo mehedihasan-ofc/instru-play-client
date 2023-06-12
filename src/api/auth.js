@@ -1,7 +1,7 @@
 // save a user to mongodb
 export const saveUser = userInfo => {
 
-    fetch('http://localhost:5000/users', {
+    fetch('https://instru-play-server-mehedihasan-ofc.vercel.app/users', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',

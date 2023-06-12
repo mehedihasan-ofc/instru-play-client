@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 import LoaderSpinner from '../pages/Shared/LoaderSpinner/LoaderSpinner';
-import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
 
 const InstructorRoute = ({ children }) => {

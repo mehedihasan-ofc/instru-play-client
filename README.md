@@ -1,21 +1,27 @@
 # InstruPlay Academy
 
-<!-- PlayNexus is the go-to website for kids' car toys. We offer a wide range of high-quality and educational toy cars, promoting imaginative play and motor skills development. With an easy-to-navigate interface, we provide a seamless shopping experience. Explore our extensive collection and find the perfect car toy for your child's interests and age. -->
+We are a passionate and dedicated Music Instrument Learning School, providing top-quality education and training to aspiring musicians of all ages and skill levels.
 
-<!-- ## Live Link
-Hosted in Firebase -> [PlayNexus](https://playnexus-auth.web.app/)
+## Live Link
+Hosted in Firebase -> [InstruPlay Academy](https://instruplay-live.web.app/)
 
-## PlayNexus Features
-Main features of PlayNexus are:
+## InstruPlay Academy Features
+Main features of InstruPlay Academy are:
 
-- Wide selection of car toys
-- Filter toys by subcategory
-- Detailed product descriptions
-- Option to become a seller and add toys to the website
-- Option for sellers to delete their added toys
-- Easy updates and modifications of toy listings for sellers
-- Ability to sort toys in ascending order for easy browsing
-- Ability to sort toys in descending order for preference-based exploration.
-- Customer reviews for informed decisions.
 - Securely manage user accounts and authentication processes
-- Integration of a Firebase authentication system for secure user login and registration -->
+- Integration of a Firebase authentication system for secure user login and registration
+
+## Used packages/technology name
+- React JS
+- React Router Dom
+- Sweetalert2
+- React Toastify
+- Swiper JS
+- Firebase
+- React Countup
+- React stripe js
+- React-query
+- React-hook-form
+- React-icons
+- React-spinners
+- React-awesome-reveal

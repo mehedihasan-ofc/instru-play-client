@@ -14,7 +14,7 @@ const ManageClasses = () => {
     })
 
     const handleApproveClass = singleClass => {
-        fetch(`http://localhost:5000/classes/approve/${singleClass._id}`, {
+        fetch(`https://instru-play-server-mehedihasan-ofc.vercel.app/classes/approve/${singleClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -28,7 +28,7 @@ const ManageClasses = () => {
     }
 
     const handleDenyClass = singleClass => {
-        fetch(`http://localhost:5000/classes/deny/${singleClass._id}`, {
+        fetch(`https://instru-play-server-mehedihasan-ofc.vercel.app/classes/deny/${singleClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

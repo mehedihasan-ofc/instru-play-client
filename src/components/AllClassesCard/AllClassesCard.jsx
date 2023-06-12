@@ -27,7 +27,7 @@ const AllClassesCard = ({ singleClass }) => {
 
             const selectedClass = { selectItem: _id, className, image, price, email: user.email, instructorName }
 
-            fetch('http://localhost:5000/carts', {
+            fetch('https://instru-play-server-mehedihasan-ofc.vercel.app/carts', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

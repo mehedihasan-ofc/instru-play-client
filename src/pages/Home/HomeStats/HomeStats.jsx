@@ -8,7 +8,7 @@ const HomeStats = () => {
     const { data: homeStats = [] } = useQuery({
         queryKey: ['homeStats'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/home-stats');
+            const res = await fetch('https://instru-play-server-mehedihasan-ofc.vercel.app/home-stats');
             return res.json();
         }
     });
@@ -21,7 +21,7 @@ const HomeStats = () => {
             <div style={{ height: "60vh", borderRadius: "0", background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${statsBg}) no-repeat center / cover` }}>
 
                 <div className='my-container'>
-                    <div className='grid grid-cols-2 md:grid-cols-4 text-center items-center h-[60vh]'>
+                    <div className='grid grid-cols-1 md:grid-cols-4 text-center items-center h-[60vh]'>
                         <div>
                             <span className='text-white font-bold text-5xl'><CountUp className='text-white font-bold text-5xl' end={students} />+</span>
                             <h2 className='text-[#F24080] font-bold text-2xl mt-2'>Active Students</h2>
