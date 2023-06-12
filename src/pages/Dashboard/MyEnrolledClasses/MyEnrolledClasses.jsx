@@ -1,21 +1,9 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../providers/AuthProvider';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import useMyEnrollClass from '../../../hooks/useMyEnrollClass';
 
 const MyEnrolledClasses = () => {
 
-    const { user } = useContext(AuthContext);
-    const [axiosSecure] = useAxiosSecure();
-
-    const { data: myEnrolled = [], refetch } = useQuery({
-        queryKey: ['myEnrolled', user?.email],
-        enabled: !!user?.email && !!localStorage.getItem('access-token'),
-        queryFn: async () => {
-            const res = await axiosSecure(`/my-enrolled?email=${user?.email}`)
-            return res.data;
-        }
-    })
+    const [myEnrolled] = useMyEnrollClass();
 
     return (
         <div className='my-container my-5'>
