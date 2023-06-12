@@ -78,8 +78,8 @@ const Navbar = () => {
             }
 
             {
-              user ? <button onClick={handleSignOut} className='font-medium transition duration-200 shadow-md md:mb-0 px-8 py-1 text-lg rounded-full border-transparent border-2 text-black bg-white hidden lg:block'>Log Out</button> :
-                <button onClick={() => navigate('/login')} className='font-medium transition duration-200 shadow-md md:mb-0 px-8 py-1 text-lg rounded-full border-transparent border-2 text-black bg-white hidden lg:block'>Login</button>
+              user ? <button onClick={handleSignOut} className='btn btn-secondary bg-pink-500 text-white hover:bg-pink-600 font-bold px-8 shadow-md transform transition-transform duration-300 hover:scale-105 rounded-full hidden lg:block'>Log Out</button> :
+                <button onClick={() => navigate('/login')} className='btn btn-secondary bg-pink-500 text-white hover:bg-pink-600 font-bold px-8 shadow-md transform transition-transform duration-300 hover:scale-105 rounded-full hidden lg:block'>Login</button>
             }
 
             <div className='flex'>
@@ -148,7 +148,7 @@ const Navbar = () => {
           <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <li><Link to="/" className="text-gray-800 hover:text-indigo-200 block px-3 py-2 rounded-md text-base font-medium">Home</Link></li>
             <li><Link to="/instructors" className="text-gray-800 hover:text-indigo-200 block px-3 py-2 rounded-md text-base font-medium">Instructors</Link></li>
-            <li><Link to="/services" className="text-gray-800 hover:text-indigo-200 block px-3 py-2 rounded-md text-base font-medium">Classes</Link></li>
+            <li><Link to="/classes" className="text-gray-800 hover:text-indigo-200 block px-3 py-2 rounded-md text-base font-medium">Classes</Link></li>
             {
               user && <li className='text-gray-800 hover:text-indigo-200 block px-3 py-2 rounded-md text-base font-medium'><Link to={isAdmin ? '/dashboard/admin-home' : isInstructor ? '/dashboard/instructor-home' : '/dashboard/student-home'}>Dashboard</Link></li>
             }
