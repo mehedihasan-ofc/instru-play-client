@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import MyPaymentHistoryRow from './MyPaymentHistoryRow';
 
 const MyPaymentHistory = () => {
 
@@ -25,29 +26,16 @@ const MyPaymentHistory = () => {
                     <thead>
                         <tr className='uppercase'>
                             <th>#</th>
-                            <th>email</th>
                             <th>Class Name</th>
                             <th>price</th>
                             <th>Transaction ID</th>
+                            <th>Time</th>
                             <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            myPayment.map((payment, idx) => <tr key={payment._id}>
-                                <th>{idx + 1}</th>
-                                <td>{payment.email}</td>
-                                <td>{payment.className}</td>
-                                <td>
-                                    <span className='badge badge-ghost'>${payment.price}</span>
-                                </td>
-                                <td>
-                                    <span className='badge badge-secondary badge-outline'>{payment.transactionId}</span>
-                                </td>
-                                <td>
-                                    <span className='badge badge-warning badge-outline'>{payment.date}</span>
-                                </td>
-                            </tr>)
+                            myPayment.map((payment, idx) => <MyPaymentHistoryRow key={payment._id} payment={payment} idx={idx} />)
                         }
                     </tbody>
                 </table>
