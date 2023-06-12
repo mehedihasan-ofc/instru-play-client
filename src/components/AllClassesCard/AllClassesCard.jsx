@@ -7,6 +7,7 @@ import useCart from '../../hooks/useCart';
 import useAdmin from '../../hooks/useAdmin';
 import useInstructor from '../../hooks/useInstructor';
 import { FaArrowRight, FaChair, FaMoneyCheckAlt } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const AllClassesCard = ({ singleClass }) => {
 
@@ -38,13 +39,7 @@ const AllClassesCard = ({ singleClass }) => {
                 .then(data => {
                     if (data.insertedId) {
                         refetch();
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Food added on the cart',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
+                        toast.success(`${className} added on the cart`)
                     }
                 })
         }
