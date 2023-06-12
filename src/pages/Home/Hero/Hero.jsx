@@ -53,7 +53,7 @@ const Hero = () => {
                             <div>
                                 <h1 className="text-white font-secondary font-extrabold uppercase text-sm md:text-4xl">{item.title}</h1>
                                 <p className="w-3/4 md:w-full mx-auto font-secondary text-xs md:text-base text-white my-3 md:my-5">{item.description}</p>
-                                <button className="border border-gray-100 text-white px-5 py-2 text-sm hover:border-cyan-500 hover:text-cyan-500 transition duration-200">{item.button}</button>
+                                <button className="border border-gray-100 text-white px-5 py-2 text-sm hover:border-pink-500 hover:text-pink-500 transition duration-200">{item.button}</button>
                             </div>
                         </SwiperSlide>)
                     }
