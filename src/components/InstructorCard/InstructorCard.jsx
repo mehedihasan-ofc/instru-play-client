@@ -9,9 +9,9 @@ const InstructorCard = ({ singleInstructor }) => {
 
         <div className="card relative w-full mb-5 md:mb-0 md:w-96 bg-base-100 border shadow-sm">
             <figure className="px-10 pt-10">
-                <img src={image} alt="Shoes" className="rounded-full" />
+                <img src={image} alt={name} className="rounded-full" />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center py-4 px-5">
                 <h2 className="card-title font-secondary font-extrabold">{name}</h2>
                 <div className='flex items-center gap-2'>
                     <FaUserCheck className='text-[#F24080]' />
