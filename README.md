@@ -8,6 +8,13 @@ Hosted in Firebase -> [InstruPlay Academy](https://instruplay-live.web.app/)
 ## InstruPlay Academy Features
 Main features of InstruPlay Academy are:
 
+- Top music instrument class
+- Top classes and instructors
+- Dark/Light mode toggle
+- Separate dashboard for student, instructor and admin
+- Student can see all his activities on his dashboard
+- The instrcutor can see all his activities on his dashboard.
+- Admin will handle everything
 - Securely manage user accounts and authentication processes
 - Integration of a Firebase authentication system for secure user login and registration
 
