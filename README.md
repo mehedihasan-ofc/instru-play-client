@@ -32,3 +32,6 @@ Main features of InstruPlay Academy are:
 - React-icons
 - React-spinners
 - React-awesome-reveal
+- Node Js
+- Express Js
+- MongoDB
