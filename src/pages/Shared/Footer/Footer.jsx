@@ -31,7 +31,7 @@ const Footer = () => {
             </footer>
             <footer className="footer footer-center p-4 bg-[#0A3F55] text-white">
                 <div>
-                    <p className='text-sm md:text-base'>Copyright © 2023 - All right reserved by InstruPlay</p>
+                    <p className='text-xs md:text-base'>Copyright © 2023 - All right reserved by InstruPlay</p>
                 </div>
             </footer>
         </>
