@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAH8GBHRFM0EkCnA7e0oHAI0GSLp5RWl9I",
-  authDomain: "instruplay-live.firebaseapp.com",
-  projectId: "instruplay-live",
-  storageBucket: "instruplay-live.appspot.com",
-  messagingSenderId: "401350529473",
-  appId: "1:401350529473:web:19d7d855583ac75e2f1f40"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
