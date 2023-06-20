@@ -101,14 +101,14 @@ const Login = () => {
                         <div className='text-center mt-4'>
                             <button
                                 type="submit"
-                                className="btn btn-secondary bg-pink-500 text-white hover:bg-pink-600 font-bold py-2 px-7 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 w-full"
+                                className="btn btn-error bg-orange-500 text-white hover:bg-orange-600 font-bold py-2 px-7 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 w-full"
                             >
                                 Login
                             </button>
                         </div>
                     </form>
 
-                    <p className='text-center mt-3 font-semibold'>New to InstruPlay? <Link to='/register' className='text-pink-600'>Sign Up</Link></p>
+                    <p className='text-center mt-3 font-semibold'>New to InstruPlay? <Link to='/register' className='text-orange-600'>Sign Up</Link></p>
 
                     <div className='mt-2'>
                         <div className="divider">OR</div>

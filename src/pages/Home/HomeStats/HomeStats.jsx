@@ -20,7 +20,7 @@ const HomeStats = () => {
 
             <div style={{ height: "60vh", borderRadius: "0", background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${statsBg}) no-repeat center / cover` }}>
 
-                <div className='my-container p-5'>
+                <div className='my-container'>
                     <div className='grid grid-cols-1 md:grid-cols-4 text-center items-center h-[60vh]'>
                         <div>
                             <span className='text-white font-bold text-5xl'><CountUp className='text-white font-bold text-5xl' end={students} />+</span>

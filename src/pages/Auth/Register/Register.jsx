@@ -210,13 +210,13 @@ const Register = () => {
                         <div className='text-center mt-4'>
                             <button
                                 type="submit"
-                                className="btn btn-secondary bg-pink-500 text-white hover:bg-pink-600 font-bold py-2 px-7 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 w-full"
+                                className="btn btn-error bg-orange-500 text-white hover:bg-orange-600 font-bold py-2 px-7 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 w-full"
                             >
                                 Sign up
                             </button>
                         </div>
                     </form>
-                    <p className='text-center mt-3 font-semibold'>Already have an account? <Link to='/login' className='text-pink-600'>Login</Link></p>
+                    <p className='text-center mt-3 font-semibold'>Already have an account? <Link to='/login' className='text-orange-600'>Login</Link></p>
 
                     <div className='p-2 my-4'>
                         <button onClick={handleGoogleLogin} className='btn rounded-full btn-primary btn-outline flex text-blue-500 items-center justify-center w-full'>

@@ -5,7 +5,7 @@ const Footer = () => {
         <>
             <footer className="footer p-10 md:p-20 bg-[#0C4B65] text-white">
                 <div>
-                    <h2 className='font-primary text-4xl md:text-5xl'>InstruPlay</h2>
+                    <h2 className='font-logo text-4xl md:text-5xl'>InstruPlay</h2>
                     <p className='mt-1'>Our mission is to provide a seamless <br />- and enjoyable experience</p>
                 </div>
                 <div>

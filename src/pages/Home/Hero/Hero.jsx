@@ -11,16 +11,21 @@ import './sliders.css';
 
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper";
+import LoaderSpinner from '../../Shared/LoaderSpinner/LoaderSpinner';
 
 const Hero = () => {
 
-    const { data: sliders = [] } = useQuery({
+    const { data: sliders = [], isLoading } = useQuery({
         queryKey: ['sliders'],
         queryFn: async () => {
             const res = await fetch('https://instru-play-server-mehedihasan-ofc.vercel.app/sliders');
             return res.json();
         }
     });
+
+    if(isLoading) {
+        return <LoaderSpinner />
+    }
 
     return (
         <div>
@@ -44,7 +49,7 @@ const Hero = () => {
                                 {
                                     height: "100vh",
                                     borderRadius: "0",
-                                    background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${item.image}) no-repeat center / cover`
+                                    background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${item.image}) no-repeat center / cover`
                                 }
                             }
                             key={id}

@@ -7,11 +7,12 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      'primary': ['Spicy Rice', 'cursive'],
-      'secondary': ['Mulish', 'sans-serif'],
+      'logo': ['Spicy Rice', 'cursive'],
+      'primary': ['Archivo', 'sans-serif'],
+      'secondary': ['DM Sans', 'sans-serif'],
       'tertiary': ['Poppins', 'sans-serif'],
+      'allura': ['Allura', 'cursive']
     }
   },
   plugins: [require("daisyui")],
 }
-

@@ -44,26 +44,26 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="absolute top-0 left-0 w-full text-white py-4 px-6 z-10">
+    <nav className="absolute font-secondary top-0 left-0 w-full text-white py-4 px-6 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16">
 
           <div className="flex items-center">
             <Link to="/">
-              <h2 className='font-primary text-white text-3xl md:text-4xl'>InstruPlay</h2>
+              <h2 className='font-logo text-white text-3xl md:text-4xl'>Instru<span className='text-[#FF7703]'>Play</span></h2>
             </Link>
           </div>
 
-          <ul className='items-center hidden uppercase space-x-8 lg:flex'>
-            <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-[#F24080]" : "text-white"} to="/">Home</NavLink></li>
-            <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-[#F24080]" : "text-white"} to="/instructors">Instructors</NavLink></li>
-            <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-[#F24080]" : "text-white"} to="/classes">Classes</NavLink></li>
+          <ul className='items-center hidden capitalize space-x-8 lg:flex'>
+            <li className='text-white text-base font-medium'><NavLink className={({ isActive }) => isActive ? "text-[#FF7703]" : "text-white"} to="/">Home</NavLink></li>
+            <li className='text-white text-base font-medium'><NavLink className={({ isActive }) => isActive ? "text-[#FF7703]" : "text-white"} to="/instructors">Instructors</NavLink></li>
+            <li className='text-white text-base font-medium'><NavLink className={({ isActive }) => isActive ? "text-[#FF7703]" : "text-white"} to="/classes">Classes</NavLink></li>
             {
               user && <li className='text-white text-base font-bold'><NavLink className={({ isActive }) => isActive ? "text-black" : "text-white"} to={isAdmin ? '/dashboard/admin-home' : isInstructor ? '/dashboard/instructor-home' : '/dashboard/student-home'}>Dashboard</NavLink></li>
             }
 
             {
-              !isAdmin && !isInstructor && <li><Link to='/dashboard/my-selected-classes'><button tabIndex={0} className="btn btn-secondary btn-outline btn-circle">
+              !isAdmin && !isInstructor && user && <li><Link to='/dashboard/my-selected-classes'><button tabIndex={0} className="btn btn-error btn-outline btn-circle">
                 <div className="indicator">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                   <span className="badge badge-sm indicator-item">{cart?.length || 0}</span>
@@ -81,8 +81,8 @@ const Navbar = () => {
             }
 
             {
-              user ? <button onClick={handleSignOut} className='btn btn-secondary bg-pink-500 text-white hover:bg-pink-600 font-bold px-8 shadow-md transform transition-transform duration-300 hover:scale-105 rounded-full hidden lg:block'>Log Out</button> :
-                <button onClick={() => navigate('/login')} className='btn btn-secondary bg-pink-500 text-white hover:bg-pink-600 font-bold px-8 shadow-md transform transition-transform duration-300 hover:scale-105 rounded-full hidden lg:block'>Login</button>
+              user ? <button onClick={handleSignOut} className='bg-orange-500 hover:bg-orange-600 transform hover:-translate-y-1 hover:scale-105 transition duration-300 ease-in-out text-white font-semibold py-2 px-10 rounded-3xl shadow-md hidden lg:block'>Log Out</button> :
+                <button onClick={() => navigate('/login')} className='bg-orange-500 hover:bg-orange-600 transform hover:-translate-y-1 hover:scale-105 transition duration-300 ease-in-out text-white font-semibold py-2 px-10 rounded-3xl shadow-md hidden lg:block'>Login</button>
             }
 
             <div className='flex'>

@@ -13,7 +13,7 @@ const Main = () => {
     useEffect(() => {
         setTimeout(() => {
             setPreloader(false);
-        }, 1600)
+        }, 3000)
     }, [])
 
     return (
