@@ -4,13 +4,14 @@ import { useQuery } from '@tanstack/react-query';
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import './sliders.css';
 
 // import required modules
-import { Pagination, Navigation, Autoplay } from "swiper";
+import { EffectFade, Pagination, Navigation, Autoplay } from "swiper";
 import LoaderSpinner from '../../Shared/LoaderSpinner/LoaderSpinner';
 
 const Hero = () => {
@@ -23,7 +24,7 @@ const Hero = () => {
         }
     });
 
-    if(isLoading) {
+    if (isLoading) {
         return <LoaderSpinner />
     }
 
@@ -32,15 +33,16 @@ const Hero = () => {
             <>
                 <Swiper
                     autoplay={{
-                        delay: 5000,
+                        delay: 3000,
                         disableOnInteraction: false,
                     }}
+                    effect={"fade"}
                     pagination={{
                         dynamicBullets: true,
                     }}
                     slidesPerView={1}
                     loop={true}
-                    modules={[Autoplay, Pagination, Navigation]}
+                    modules={[EffectFade, Autoplay, Pagination, Navigation]}
                     className="mySwiper"
                 >
                     {
@@ -69,12 +71,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-/* 
-<div>
-                                <h1 className="text-white font-primary uppercase text-3xl md:text-5xl">{singleSlider.title}</h1>
-                                <p className="w-full font-secondary text-xs md:text-base text-white py-3 md:py-4">{singleSlider.description}</p>
-
-                                <button className="border border-gray-100 text-white px-4 py-2 text-sm hover:border-cyan-500 hover:text-cyan-500 transition duration-200">Explore Now</button>
-                            </div>
-*/
