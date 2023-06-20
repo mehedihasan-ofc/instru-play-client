@@ -14,18 +14,18 @@ const InstructorCard = ({ singleInstructor }) => {
             <div className="card-body items-center text-center py-4 px-5">
                 <h2 className="card-title font-secondary font-extrabold">{name}</h2>
                 <div className='flex items-center gap-2'>
-                    <FaUserCheck className='text-[#F24080]' />
+                    <FaUserCheck className='text-[#FF7703]' />
                     <p><span className='font-medium'>{students}+</span> satisfied students</p>
                 </div>
                 <div className='divider my-0'></div>
                 <div className="card-actions">
-                    <span className='bg-[#F24080] p-2 text-white rounded-full cursor-pointer'><FaFacebookF /></span>
-                    <span className='bg-[#F24080] p-2 text-white rounded-full cursor-pointer'><FaTwitter /></span>
-                    <span className='bg-[#F24080] p-2 text-white rounded-full cursor-pointer'><FaInstagram /></span>
+                    <span className='bg-[#FF7703] p-2 text-white rounded-full cursor-pointer'><FaFacebookF /></span>
+                    <span className='bg-[#FF7703] p-2 text-white rounded-full cursor-pointer'><FaTwitter /></span>
+                    <span className='bg-[#FF7703] p-2 text-white rounded-full cursor-pointer'><FaInstagram /></span>
                 </div>
             </div>
 
-            <span className='absolute text-[#F24080] top-5 text-2xl right-5'><FaRegBookmark /></span>
+            <span className='absolute text-[#FF7703] top-5 text-2xl right-5'><FaRegBookmark /></span>
         </div>
     );
 };
